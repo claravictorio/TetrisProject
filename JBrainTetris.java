@@ -9,6 +9,10 @@ public class JBrainTetris extends JTetris {
 	}
 	public void tick(int verb)
 	{
+		if (currentPiece != null) {
+			board.undo();	// remove the piece from its old position
+		}
+
 		Brain.Move move = brain.bestMove(board, currentPiece, HEIGHT + TOP_SPACE, null);
 
 		if(!currentPiece.equals(move.piece))
